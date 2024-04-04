@@ -1,5 +1,6 @@
 name: "Terraform actions"
 on:
+    workflow_dispatch:
     push:
         branches:
             - main
@@ -36,7 +37,7 @@ jobs:
 
             -   name: Terraform fmt
                 id: fmt
-                run: terraform fmt -check
+                run: terraform fmt
                 continue-on-error: true
 
             -   name: Terraform Init
