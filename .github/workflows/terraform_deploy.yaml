@@ -18,7 +18,7 @@ env:
     TF_LOG: INFO
     AWS_REGION: ${{ vars.AWS_REGION }}
     AWS_ROLE: ${{ secrets.AWS_ROLE }}
-    ROLE_SESSION: Github-OIDC-TERRAFORM
+    ROLE_SESSION: Github-OIDC-TERRAFORM-development
 
 jobs:
     development-plan:
@@ -30,7 +30,14 @@ jobs:
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/development'
         steps:
             - name: checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
+            
+            - name: Configure AWS credentials from AWS account
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-region: ${{ env.AWS_REGION }}
+                role-to-assume: ${{ env.AWS_ROLE }}
+                role-session-name: ${{ env.ROLE_SESSION }}
 
             - name: development-plan
               uses: Cloud-Engineering-EA/composite-action-terraform-deploy@v1.0
