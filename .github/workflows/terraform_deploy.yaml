@@ -27,7 +27,7 @@ jobs:
             cancel-in-progress: false
         runs-on: ubuntu-latest
         environment: development
-        if: github.event_name == 'pull_request' && github.ref == 'refs/heads/development'
+        if: github.event_name == 'pull_request'
         steps:
             - name: checkout
               uses: actions/checkout@v4
