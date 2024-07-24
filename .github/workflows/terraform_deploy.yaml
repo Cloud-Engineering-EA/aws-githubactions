@@ -1,4 +1,4 @@
-name: Terraform plan_action 
+name: "Terraform plan_action"
 on:
     push:
         branches: 
