@@ -1,2 +1,2 @@
-bucket = "github-actions-oidc-terraform-state"
+bucket = "terraformstatepool"
 key = "development/terraform.tfstate"
